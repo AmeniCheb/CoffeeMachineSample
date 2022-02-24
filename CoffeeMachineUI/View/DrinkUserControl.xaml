@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="CoffeMachineUI.View.DrinkUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="550">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+       
+        <!--Create controls-->
+        <Label Content="Choose your Drink..."></Label>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0 0 0 5">
+            <Label Width="150" Margin="0 0 5 0" Content="Use my badge"></Label>
+            <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding UseBadge}"></CheckBox>
+            <Label Content="Enter your badge" Margin="20 0 5 0"></Label>
+            <TextBox Width="50" MaxLength="3" Text="{Binding Badge,Mode=TwoWay}" IsEnabled="{Binding UseBadge}"></TextBox>
+            <Button Width="100" Margin="5 0 0 0" Content="Get last drink" IsEnabled="{Binding BtnLastDrinkEnabled}" Command="{Binding GetMyLastDrinkCommand}"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 0 0 5">
+            <Label Width="150" Margin="0 0 5 0"  Content="Drink type"></Label>
+            <ComboBox Width="300" Grid.Column="1" ItemsSource="{Binding DrinkTypes}" SelectedItem="{Binding DrinkType}"></ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0 0 0 5">
+            <Label Width="150" Margin="0 0 5 0" Content="Sugar quantity"></Label>
+            <ComboBox Width="300" ItemsSource="{Binding SugarQuantityChoice}" SelectedItem="{Binding SugarQuantity}"></ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0 0 0 5">
+            <Label Width="150" Margin="0 0 5 0" Content="Use my mug"></Label>
+            <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding UseOwnMug}"></CheckBox>
+        </StackPanel>
+        <Button Content="Command drink" Grid.Row="5" Width="100" Margin="0 0 10 0" HorizontalAlignment="Right" Command="{Binding GetDrinkCommand}"></Button>
+    </Grid>
+</UserControl>
